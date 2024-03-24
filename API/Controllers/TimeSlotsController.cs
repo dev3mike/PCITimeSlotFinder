@@ -5,11 +5,11 @@ namespace API.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
-public class HomeController : Controller
+public class TimeSlotsController : Controller
 {
-    private readonly ILogger<HomeController> _logger;
+    private readonly ILogger<TimeSlotsController> _logger;
 
-    public HomeController(ILogger<HomeController> logger)
+    public TimeSlotsController(ILogger<TimeSlotsController> logger)
     {
         _logger = logger;
     }
@@ -17,6 +17,7 @@ public class HomeController : Controller
     [HttpGet]
     public async Task<object> GetTodoItems()
     {
+        
         return new {message= "This is home"};
     }
 

@@ -5,6 +5,9 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllers();
 builder.Services.AddServices();
+builder.Services.AddSwaggerConfiguration();
+
+builder.Services.AddRouting(options => options.LowercaseUrls = true);
 
 var app = builder.Build();
 
@@ -16,8 +19,12 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+if (app.Environment.IsDevelopment())
+{
+    app.AddSwaggerUiConfiguration();
+}
+
 app.UseHttpsRedirection();
-app.UseStaticFiles();
 
 app.UseRouting();
 
@@ -25,6 +32,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=TimeSlots}/{action=Index}/{id?}");
 
 app.Run();
