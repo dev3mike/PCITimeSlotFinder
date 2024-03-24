@@ -4,10 +4,10 @@ namespace API.Configuration;
 
     internal static class ServiceConfiguration
     {
-        public static IServiceCollection AddServices(this IServiceCollection services)
+        public static void AddServices(this IServiceCollection services)
         {
             services.AddApplicationServices();
-            return services;
+            services.AddHttpClient();
         }
     }
 

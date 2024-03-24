@@ -1,3 +1,5 @@
+using Application.Services;
+using Domain.Contracts;
 using Infrastructure.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -7,7 +9,7 @@ public static class ServiceConfiguration
 {
     public static IServiceCollection AddApplicationServices(this IServiceCollection services)
     {
-        // services.AddSingleton<IHubService, HubService>();
+        services.AddSingleton<ITimeSlotFinderService, TimeSlotFinderService>();
         services.AddInfrastructureServices();
         return services;
     }

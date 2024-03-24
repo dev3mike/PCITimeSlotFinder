@@ -1,13 +1,17 @@
+using Domain.Contracts;
+using Infrastructure.Contracts;
+using Infrastructure.Repositories;
+using Infrastructure.Services;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Infrastructure.Configuration;
 
     public static class ServiceConfiguration
     {
-        public static IServiceCollection AddInfrastructureServices(this IServiceCollection services)
+        public static void AddInfrastructureServices(this IServiceCollection services)
         {
-            // services.AddSingleton<IHubService, HubService>();
-            return services;
+            services.AddSingleton<ISchedulesRepository, SchedulesRepository>();
+            services.AddSingleton<IHttpService, HttpService>();
         }
     }
 
